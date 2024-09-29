@@ -26,8 +26,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npm start",
-    "build": "npm run build",
     "lint": "npx eslint .",
     "format": "npx prettier --write ."
   },
