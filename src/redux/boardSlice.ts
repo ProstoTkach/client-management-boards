@@ -12,7 +12,7 @@ const initialState: BoardState = {
 export const fetchBoards = createAsyncThunk<Board[]>(
   'boards/fetchBoards',
   async () => {
-    const response = await fetch('http://localhost:5000/api/boards');
+    const response = await fetch('https://server-management-boards.onrender.com/api/boards');
     const data = await response.json();
     return data;
   },
@@ -22,7 +22,7 @@ export const createBoard = createAsyncThunk<
   Board,
   { name: string; _id: string }
 >('boards/createBoard', async ({ name, _id }) => {
-  const response = await fetch('http://localhost:5000/api/boards', {
+  const response = await fetch('https://server-management-boards.onrender.com/api/boards', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export const deleteBoard = createAsyncThunk<string, string>(
   'boards/deleteBoard',
   async (boardId) => {
     const response = await fetch(
-      `http://localhost:5000/api/boards/${boardId}`,
+      `https://server-management-boards.onrender.com/api/boards/${boardId}`,
       {
         method: 'DELETE',
       },
@@ -64,7 +64,7 @@ export const addCard = createAsyncThunk<
   'boards/addCard',
   async ({ boardId, index, columnNumber, title, description }) => {
     const response = await fetch(
-      `http://localhost:5000/api/boards/${columnNumber}`,
+      `https://server-management-boards.onrender.com/api/boards/${columnNumber}`,
       {
         method: 'POST',
         headers: {
@@ -93,7 +93,7 @@ export const updateCard = createAsyncThunk<
   'boards/updateCard',
   async ({ boardId, columnNumber, cardId, title, description }) => {
     const response = await fetch(
-      `http://localhost:5000/api/boards/${columnNumber}/${cardId}`,
+      `https://server-management-boards.onrender.com/api/boards/${columnNumber}/${cardId}`,
       {
         method: 'PUT',
         headers: {
@@ -114,7 +114,7 @@ export const deleteCard = createAsyncThunk<
   { boardId: string; columnNumber: string; cardId: string }
 >('boards/deleteCard', async ({ boardId, columnNumber, cardId }) => {
   const response = await fetch(
-    `http://localhost:5000/api/boards/${boardId}/${columnNumber}/${cardId}`,
+    `https://server-management-boards.onrender.com/api/boards/${boardId}/${columnNumber}/${cardId}`,
     {
       method: 'DELETE',
     },
@@ -138,7 +138,7 @@ export const moveCard = createAsyncThunk<
   'boards/moveCard',
   async ({ boardId, fromColumn, toColumn, cardId, toIndex }) => {
     const response = await fetch(
-      `http://localhost:5000/api/boards/from/${fromColumn}/to/${toColumn}/${cardId}`,
+      `https://server-management-boards.onrender.com/api/boards/from/${fromColumn}/to/${toColumn}/${cardId}`,
       {
         method: 'PUT',
         headers: {
